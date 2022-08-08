@@ -2,7 +2,13 @@
 
 <div>
   <%= form_with url: root_path, method: :get do |form| %>
-    <%= form.select(:origin_id, options_for_select(@airport_options)) %>
+    <%= form.label :origin_id, "From?" %>
+    <%= form.select :origin_id, options_for_select(@airport_options) %>
+    <%= form.label :destination_id, "To?" %>
+    <%= form.select :destination_id, options_for_select(@airport_options) %>
+    <%= form.label :number_of_passengers, "Number of passengers?" %>
+    <%= form.select :number_of_passengers, [1..4] %>
+    
     <%= form.submit "Search" %>
   <% end %>
 </div>

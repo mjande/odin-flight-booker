@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require 'faker'
+
 Flight.delete_all
 Airport.delete_all
 
@@ -19,7 +21,7 @@ end
 15.times do
   orig = Airport.all.sample
   dest = Airport.where.not(id: orig.id).sample
-  dur = rand(3..10)
-  start = rand(Time.now..Time.now.next_year)
+  dur = Faker::Number.between(from: 3, to: 8)
+  start = Faker::Time.between(from: DateTime.now, to: DateTime.now.next_year)
   new_flight = Flight.create(origin_id: orig.id, destination_id: dest.id, departure_time: start, flight_duration: dur)
 end
