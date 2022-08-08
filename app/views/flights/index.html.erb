@@ -1,6 +1,8 @@
 <h2>Welcome to Flight Booker</h2>
 
-<%= form_with url: root_path, method: :get do |form| %>
-  <%= form.select(:origin_id, options_for_select(@airport_options)) %>
-  <%= form.submit "Search" %>
-<% end %>
+<div>
+  <%= form_with url: root_path, method: :get do |form| %>
+    <%= form.select(:origin_id, options_for_select(@airport_options)) %>
+    <%= form.submit "Search" %>
+  <% end %>
+</div>
