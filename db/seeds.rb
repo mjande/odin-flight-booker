@@ -22,6 +22,6 @@ end
   orig = Airport.all.sample
   dest = Airport.where.not(id: orig.id).sample
   dur = Faker::Number.between(from: 3, to: 8)
-  start = Faker::Time.between(from: DateTime.now, to: DateTime.now.next_year)
+  start = Faker::Time.between(from: Time.now, to: Time.now.next_year)
   new_flight = Flight.create(origin_id: orig.id, destination_id: dest.id, departure_time: start, flight_duration: dur)
 end
