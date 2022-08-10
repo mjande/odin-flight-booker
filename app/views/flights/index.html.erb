@@ -20,22 +20,31 @@
           <div class="mb-2"><%= form.label :departure_time, "Departure date?" %></div>
           <div><%= form.select :departure_time, @date_options %></div>
         </div>
-        <div class=" bg-red w-fit py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender">
+        <div class="py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender">
           <%= form.submit "Search" %>
         </div>
       </div>
     <% end %>
   </div>
 
-  <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow">
-    <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b self-stretch">
-      <%= "Flights from #{@search[:origin]} to #{@search[:destination]} on #{@search[:date]}" %>
-    </div>
-    <div class="flex flex-col">
-      <% @matching_flights.each do |flight| %>
-        <%= render partial: 'flight', locals: {flight: flight} %>
-      <% end %>
-    </div>
-
+  <% unless @search.nil? %>
+    <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow">
+      <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b self-stretch">
+        <%= "Flights from #{@search[:origin]} to #{@search[:destination]} on #{@search[:date]}" %>
+      </div>
+      <div class="flex flex-col">
+        <%= form_with url: false do |form| %>
+          <%= form.hidden_field :num_of_passengers, value: params[:number_of_passengers] %>
+          <% @matching_flights.each do |flight| %>
+            <%= render partial: 'flight', locals: {flight: flight, form: form} %>
+          <% end %>
+          <div class="flex justify-end">
+            <div class="my-3 mr-10 py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender w-fit">
+              <%= form.submit "Book flight" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

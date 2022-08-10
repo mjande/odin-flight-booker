@@ -1,4 +1,8 @@
-<div class="flex justify-around text-lg p-4 border-b-black border-b-2">
+<div class="flex justify-between text-lg p-4 border-b-black border-b-2 gap-6 items-center pr-10">
+  <div class="flex gap-2 p-2">
+    <div><%= form.label :flight_id, "Select"%></div>   
+    <div><%= form.radio_button :flight_id, flight.id %></div>
+  </div>
   <div>Flight: #
     <%= flight.id %>
   </div>
