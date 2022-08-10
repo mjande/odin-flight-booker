@@ -3,16 +3,20 @@
     <div><%= form.label :flight_id, "Select"%></div>   
     <div><%= form.radio_button :flight_id, flight.id %></div>
   </div>
-  <div>Flight: #
-    <%= flight.id %>
+  <div>
+    <div>Flight:</div>
+    <%= "##{flight.id}" %>
   </div>
-  <div>Date:
-    <%= flight.departure_date_formatted %>
-  </div>
-  <div>Departing at:
+  <div>
+    <div>Departing at:</div>
     <%= flight.departure_time_formatted %>
   </div>
-  <div>Arriving at:
+  <div>
+    <div>Arriving at:</div>
     <%= flight.arrival_time_formatted %>
+  </div>
+  <div>
+    <div>Flight Duration:</div>
+    <%= "#{flight.flight_duration} hours" %>
   </div>
 </div>

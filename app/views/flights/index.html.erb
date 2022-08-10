@@ -1,5 +1,5 @@
-<div class="flex flex-col gap-6 mt-12 mx-6">
-  <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow w-min">
+<div class="flex flex-col items-center gap-6 mt-12 mx-6 w-min">
+  <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow">
     <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b">Search for a flight:</div>
 
     <%= form_with url: 'flights', method: :get do |form| %>
@@ -20,7 +20,7 @@
           <div class="mb-2"><%= form.label :departure_time, "Departure date?" %></div>
           <div><%= form.select :departure_time, @date_options %></div>
         </div>
-        <div class="py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender">
+        <div class="py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender hover:bg-purple hover:shadow">
           <%= form.submit "Search" %>
         </div>
       </div>
@@ -28,9 +28,9 @@
   </div>
 
   <% unless @search.nil? %>
-    <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow">
-      <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b self-stretch">
-        <%= "Flights from #{@search[:origin]} to #{@search[:destination]} on #{@search[:date]}" %>
+    <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow w-full">
+      <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b self-stretch text-center">
+        <%= "Flights: #{@search[:origin]} -> #{@search[:destination]} (#{@search[:date]})" %>
       </div>
       <div class="flex flex-col">
         <%= form_with url: false do |form| %>
@@ -39,7 +39,7 @@
             <%= render partial: 'flight', locals: {flight: flight, form: form} %>
           <% end %>
           <div class="flex justify-end">
-            <div class="my-3 mr-10 py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender w-fit">
+            <div class="my-3 mr-10 py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender w-fit hover:bg-purple hover:shadow">
               <%= form.submit "Book flight" %>
             </div>
           </div>
