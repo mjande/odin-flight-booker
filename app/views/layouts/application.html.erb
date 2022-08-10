@@ -9,11 +9,17 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Fira+Sans:wght@400;500&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="flex flex-col bg-dark h-screen">
+      <%= render 'layouts/header' %>
       <%= yield %>
+      <div class="flex-grow"></div>
     </main>
   </body>
 </html>

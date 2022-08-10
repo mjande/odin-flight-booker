@@ -1,16 +1,14 @@
-<div>
-  <div>
-    Departing from:
-    <%= flight.origin %>
+<div class="flex justify-around text-lg p-4 border-b-black border-b-2">
+  <div>Flight: #
+    <%= flight.id %>
   </div>
-  <div>
-    Arriving at: 
-    <%= flight.destination %>
-  </div>
-  <div>
-    Departure Date: 
+  <div>Date:
     <%= flight.departure_date_formatted %>
-    Departure Time: 
+  </div>
+  <div>Departing at:
     <%= flight.departure_time_formatted %>
+  </div>
+  <div>Arriving at:
+    <%= flight.arrival_time_formatted %>
   </div>
 </div>

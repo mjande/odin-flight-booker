@@ -10,7 +10,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Fira Sans', 'sans-serif'],
+        heading: ['Carter One', 'sans-serif'],
+      },
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        'dark': '#2e1114',
+        'maroon': '#501b1d',
+        'purple': '#64485c',
+        'lavender': '#83677b',
+        'olive': '#adadad'
       },
     },
   },

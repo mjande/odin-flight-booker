@@ -17,4 +17,9 @@ class Flight < ApplicationRecord
   def departure_time_formatted
     departure_time.strftime("%I:%M%p")
   end
+
+  def arrival_time_formatted
+    arrival_time = departure_time + (flight_duration * 3600)
+    arrival_time.strftime("%I:%M%p")
+  end
 end
