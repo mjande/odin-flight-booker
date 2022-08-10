@@ -1,6 +1,8 @@
 class Flight < ApplicationRecord
   belongs_to :origin, class_name: 'Airport', foreign_key: 'origin_id'
   belongs_to :destination, class_name: 'Airport', foreign_key: 'destination_id'
+  has_many :passengers
+  has_many :bookings
 
   scope :filter_by_origin, -> (origin) { where(origin: origin) }
   scope :filter_by_destination, -> (destination) { where(destination: destination) }
