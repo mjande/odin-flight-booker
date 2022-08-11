@@ -1,0 +1,8 @@
+<div>Flight #<%= booking.flight_id %></div>
+<div>Departure Date: <%= booking.flight.departure_date_formatted %></div>
+<div>
+  Departing from <%= booking.flight.origin.code %> at <%= booking.flight.departure_time_formatted %>
+</div>
+<div>
+  Arriving at <%= booking.flight.destination.code %> at <%= booking.flight.arrival_time_formatted %>
+</div>

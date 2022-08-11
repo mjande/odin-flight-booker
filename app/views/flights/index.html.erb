@@ -1,50 +1,52 @@
-<div class="flex flex-col items-center gap-6 mt-12 mx-6 w-min">
-  <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow">
-    <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b">Search for a flight:</div>
+<div class="flex justify-center w-screen">
+  <div class="flex flex-col gap-6 mt-12 w-min">
+    <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow">
+      <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b">Search for a flight:</div>
 
-    <%= form_with url: 'flights', method: :get do |form| %>
-      <div class="flex justify-start items-end gap-5 px-6 py-3">
-        <div>
-          <div class="mb-2"><%= form.label :origin_id, "From?" %></div>
-          <div><%= form.select :origin_id, @airport_options %></div>
-        </div>
-        <div>
-          <div class="mb-2"><%= form.label :destination_id, "To?" %></div>
-          <div><%= form.select :destination_id, @airport_options %></div>
-        </div>
-        <div class="w-24">
-          <div class="mb-2"><%= form.label :number_of_passengers, "Number of passengers?" %></div>
-          <div><%= form.select :number_of_passengers, 1..4 %></div>
-        </div>
-        <div>
-          <div class="mb-2"><%= form.label :departure_time, "Departure date?" %></div>
-          <div><%= form.select :departure_time, @date_options %></div>
-        </div>
-        <div class="btn">
-          <%= form.submit "Search" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <% unless @search.nil? %>
-    <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow w-full">
-      <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b self-stretch text-center">
-        <%= "Flights: #{@search[:origin]} -> #{@search[:destination]} (#{@search[:date]})" %>
-      </div>
-      <div class="flex flex-col">
-        <%= form_with url: new_booking_path, method: :get do |form| %>
-          <%= form.hidden_field :num_of_passengers, value: params[:number_of_passengers] %>
-          <% @matching_flights.each do |flight| %>
-            <%= render partial: 'flight', locals: {flight: flight, form: form} %>
-          <% end %>
-          <div class="flex justify-end">
-            <div class="btn my-3 mr-3">
-              <%= form.submit "Book flight" %>
-            </div>
+      <%= form_with url: 'flights', method: :get do |form| %>
+        <div class="flex justify-start items-end gap-5 px-6 py-3">
+          <div>
+            <div class="mb-2"><%= form.label :origin_id, "From?" %></div>
+            <div><%= form.select :origin_id, @airport_options %></div>
           </div>
-        <% end %>
-      </div>
-    <% end %>
+          <div>
+            <div class="mb-2"><%= form.label :destination_id, "To?" %></div>
+            <div><%= form.select :destination_id, @airport_options %></div>
+          </div>
+          <div class="w-24">
+            <div class="mb-2"><%= form.label :number_of_passengers, "Number of passengers?" %></div>
+            <div><%= form.select :number_of_passengers, 1..4 %></div>
+          </div>
+          <div>
+            <div class="mb-2"><%= form.label :departure_time, "Departure date?" %></div>
+            <div><%= form.select :departure_time, @date_options %></div>
+          </div>
+          <div class="btn">
+            <%= form.submit "Search" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <% unless @search.nil? %>
+      <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow w-full">
+        <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b self-stretch text-center">
+          <%= "Flights: #{@search[:origin]} -> #{@search[:destination]} (#{@search[:date]})" %>
+        </div>
+        <div class="flex flex-col">
+          <%= form_with url: new_booking_path, method: :get do |form| %>
+            <%= form.hidden_field :num_of_passengers, value: params[:number_of_passengers] %>
+            <% @matching_flights.each do |flight| %>
+              <%= render partial: 'flight', locals: {flight: flight, form: form} %>
+            <% end %>
+            <div class="flex justify-end">
+              <div class="btn my-3 mr-3">
+                <%= form.submit "Book flight" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -14,14 +14,7 @@
       <%= form_with model: @booking, method: :post do |form| %>
         <div class="flex flex-col items-center gap-5 px-6 py-3">
           <%= form.hidden_field :flight_id, value: @booking.flight_id %>
-          <div>Flight #<%= @booking.flight_id %></div>
-          <div>Departure Date: <%= @booking.flight.departure_date_formatted %></div>
-          <div>
-            Departing from <%= @booking.flight.origin.code %> at <%= @booking.flight.departure_time_formatted %>
-          </div>
-          <div>
-            Arriving at <%= @booking.flight.destination.code %> at <%= @booking.flight.arrival_time_formatted %>
-          </div>
+          <%= render partial: "details", locals: { booking: @booking }%>
           <%= form.fields_for :passengers do |passenger_form| %>
             <div class="flex flex-col gap-3">
               <div class="flex gap-2">
