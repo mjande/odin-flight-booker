@@ -18,7 +18,10 @@
   <body>
     <main class="flex flex-col bg-dark h-screen">
       <%= render 'layouts/header' %>
-      <div class="flex justify-center"><%= yield %><div>
+      <% flash.each do |name, message| %>
+        <div class="<%= name %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
     </main>
   </body>
 </html>

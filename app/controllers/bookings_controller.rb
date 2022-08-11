@@ -1,4 +1,7 @@
 class BookingsController < ApplicationController
+  def show
+  end
+  
   def new
     @booking = Booking.new(flight_id: params[:flight_id])
     num_of_passengers = params[:num_of_passengers].to_i
@@ -7,16 +10,18 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @passengers = @booking.passengers
     if @booking.save
-      render :booking
+      flash[:success] = "Your flight was successfully booked!"
+      redirect_to @booking
     else
-      redirect_to :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
   def booking_params
-    require(:booking).permit(:flight_id, passengers_attributes: [:name, :email])
+    params.require(:booking).permit(:flight_id, passengers_attributes: [:name, :email, :flight_id])
   end
 end

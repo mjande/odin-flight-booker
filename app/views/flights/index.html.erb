@@ -20,7 +20,7 @@
           <div class="mb-2"><%= form.label :departure_time, "Departure date?" %></div>
           <div><%= form.select :departure_time, @date_options %></div>
         </div>
-        <div class="py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender hover:bg-purple hover:shadow">
+        <div class="btn">
           <%= form.submit "Search" %>
         </div>
       </div>
@@ -39,7 +39,7 @@
             <%= render partial: 'flight', locals: {flight: flight, form: form} %>
           <% end %>
           <div class="flex justify-end">
-            <div class="my-3 mr-10 py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender w-fit hover:bg-purple hover:shadow">
+            <div class="btn my-3 mr-3">
               <%= form.submit "Book flight" %>
             </div>
           </div>
