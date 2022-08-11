@@ -1,13 +1,13 @@
 <div class="flex flex-col items-center gap-6 w-full">
-  <div class="bg-red-300 w-screen text-center p-2">
-    <% if @booking.errors.any? %>
+  <% if @booking.errors.any? %>
+    <div class="bg-red-300 w-screen text-center p-2">
       <% @booking.passengers.each do |passenger| %>
         <% passenger.errors.full_messages.each do |message| %>
           <h3>Passenger's <%= message.downcase %></h3>
         <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow mt-12">
     <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b">Your Booking</div>
@@ -23,11 +23,12 @@
             Arriving at <%= @booking.flight.destination.code %> at <%= @booking.flight.arrival_time_formatted %>
           </div>
           <%= form.fields_for :passengers do |passenger_form| %>
-            <div>
-              <%= passenger_form.label :name, "Name" %>
-              <%= passenger_form.text_field :name %>
-              <%= passenger_form.label :email, "Email" %>
-              <%= passenger_form.email_field :email %>
+            <div class="flex flex-col gap-3">
+              <div class="flex gap-2">
+                <div><%= passenger_form.label :name, "Name" %>
+                <%= passenger_form.text_field :name %></div>
+                <div><%= passenger_form.label :email, "Email" %>
+                <%= passenger_form.email_field :email %></div>
               <%= passenger_form.hidden_field :flight_id, value: @booking.flight_id %>
             </div>
           <% end %>

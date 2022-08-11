@@ -11,13 +11,8 @@
 @layer base {
   h1 {
     @apply font-heading
+  },
+  .field_with_errors {
+    @apply bg-red-500 text-lg;
   }
-}
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 500,
-  'GRAD' 0,
-  'opsz' 48
 }
