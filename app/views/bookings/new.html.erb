@@ -1,1 +1,28 @@
-<div>sample text</div>
+<div class="flex flex-col items-center gap-6 mt-12 mx-6 w-full">
+  <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow">
+    <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b">Your Booking</div>
+      <%= form_with model: @booking, method: :get do |form| %>
+        <div class="flex flex-col justify-start gap-5 px-6 py-3">
+          <div>Flight #<%= @booking.flight_id %></div>
+          <div>Departure Date: <%= @booking.flight.departure_date_formatted %></div>
+          <div>
+            Departing from <%= @booking.flight.origin.code %> at <%= @booking.flight.departure_time_formatted %>
+          </div>
+          <div>
+            Arriving at <%= @booking.flight.destination.code %> at <%= @booking.flight.arrival_time_formatted %>
+          </div>
+          <%= form.fields_for :passengers do |passenger_form| %>
+            <div>
+              <%= passenger_form.label :name, "Name" %>
+              <%= passenger_form.text_field :name %>
+              <%= passenger_form.label :email, "Email" %>
+              <%= passenger_form.email_field :email %>
+              <%= passenger_form.hidden_field :flight_id, value: @booking.flight_id %>
+            </div>
+          <% end %>
+          <div><%= form.submit %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
