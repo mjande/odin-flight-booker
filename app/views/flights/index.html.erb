@@ -33,7 +33,7 @@
         <%= "Flights: #{@search[:origin]} -> #{@search[:destination]} (#{@search[:date]})" %>
       </div>
       <div class="flex flex-col">
-        <%= form_with url: false do |form| %>
+        <%= form_with url: new_booking_path, method: :get do |form| %>
           <%= form.hidden_field :num_of_passengers, value: params[:number_of_passengers] %>
           <% @matching_flights.each do |flight| %>
             <%= render partial: 'flight', locals: {flight: flight, form: form} %>
