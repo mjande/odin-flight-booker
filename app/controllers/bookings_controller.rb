@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
+# BookingsController handles actions for all bookings
 class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
   end
-  
+
   def new
     @booking = Booking.new(flight_id: params[:flight_id])
     num_of_passengers = params[:num_of_passengers].to_i
@@ -13,7 +16,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @passengers = @booking.passengers
     if @booking.save
-      flash[:success] = "Your flight was successfully booked!"
+      flash[:success] = 'Your flight was successfully booked!'
       redirect_to @booking
     else
       render :new, status: :unprocessable_entity
@@ -23,6 +26,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:flight_id, passengers_attributes: [:name, :email])
+    params.require(:booking).permit(:flight_id, passengers_attributes: %i[name email])
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Airport < ApplicationRecord
   validates :code, presence: true
 
