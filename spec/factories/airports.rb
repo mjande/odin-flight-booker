@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :airport do
-    code { "MyString" }
+    code { 'ATL' }
   end
 end

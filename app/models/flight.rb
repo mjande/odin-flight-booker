@@ -11,11 +11,7 @@ class Flight < ApplicationRecord
   has_many :passengers, dependent: :delete_all
   has_many :bookings, dependent: :delete_all
 
-  scope :filter_by_origin, ->(origin) { where(origin:) }
-  scope :filter_by_destination, ->(destination) { where(destination:) }
-  scope :filter_by_date, lambda { |date|
-    where(departure_time: [Time.zone.parse(date).beginning_of_day..Time.zone.parse(date).end_of_day]) unless date.nil?
-  }
+  scope :filter_by_all, ->(origin:, destination:, date:) { filter_by_origin(origin).filter_by_destination(destination).filter_by_date(date) }
 
   def departure_date_formatted
     departure_time.strftime('%m/%d/%Y')
@@ -29,4 +25,10 @@ class Flight < ApplicationRecord
     arrival_time = departure_time + (flight_duration * 3600)
     arrival_time.strftime('%I:%M%p')
   end
+
+  scope :filter_by_origin, ->(origin) { where(origin:) }
+  scope :filter_by_destination, ->(destination) { where(destination:) }
+  scope :filter_by_date, lambda { |date|
+    where(departure_time: [Time.zone.parse(date).beginning_of_day..Time.zone.parse(date).end_of_day]) unless date.nil?
+  }
 end
