@@ -22,9 +22,8 @@
                 <%= passenger_form.text_field :name %></div>
                 <div><%= passenger_form.label :email, "Email" %>
                 <%= passenger_form.email_field :email %></div>
-              <%= passenger_form.hidden_field :flight_id, value: @booking.flight_id %>
-            </div>
-          <% end %>
+              </div>
+            <% end %>
           <div class="btn self-end"><%= form.submit %></div>
         </div>
       <% end %>
