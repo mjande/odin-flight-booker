@@ -1,5 +1,8 @@
 FactoryBot.define do
   factory :booking do
-    flights { nil }
+    flight
+    after(:build) do |booking|
+      booking.passengers << build(:passenger, booking:)
+    end
   end
 end
