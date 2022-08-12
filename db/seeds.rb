@@ -11,7 +11,6 @@ require 'faker'
 Flight.delete_all
 Airport.delete_all
 
-
 airport_codes = %w[ATL DFW DEN ORD LAX CLT MCO LAS PHX MIA SEA IAH JFK EWR FLL MSP SFO DTW BOS SLC PHL BWI TPA SAN LGA MDW BNA IAD]
 
 airport_codes.each do |airport_code|
@@ -22,6 +21,6 @@ end
   orig = Airport.all.sample
   dest = Airport.where.not(id: orig.id).sample
   dur = Faker::Number.between(from: 3, to: 8)
-  start = Faker::Time.between(from: Time.now, to: Time.now.next_year)
-  new_flight = Flight.create(origin_id: orig.id, destination_id: dest.id, departure_time: start, flight_duration: dur)
+  start = Faker::Time.between(from: Time.zone.now, to: Time.zone.now.next_year)
+  Flight.create(origin_id: orig.id, destination_id: dest.id, departure_time: start, flight_duration: dur)
 end
