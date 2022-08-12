@@ -3,6 +3,9 @@
 # The Flight model represents all flights to and from any airport. Columns in the
 # flight table: origin_id, destination_id, departure_time, and duration.
 class Flight < ApplicationRecord
+  validates :departure_time, presence: true
+  validates :flight_duration, presence: true
+
   belongs_to :origin, class_name: 'Airport'
   belongs_to :destination, class_name: 'Airport'
   has_many :passengers, dependent: :delete_all

@@ -51,7 +51,6 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 # Add Simple Forms
-gem 'simple_form'
 
 gem 'tailwindcss-rails', '~> 2.0'
 
