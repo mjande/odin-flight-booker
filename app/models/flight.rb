@@ -3,15 +3,15 @@
 # The Flight model represents all flights to and from any airport. Columns in the
 # flight table: origin_id, destination_id, departure_time, and duration.
 class Flight < ApplicationRecord
-  belongs_to :origin, class_name: 'Airport', foreign_key: 'origin_id'
-  belongs_to :destination, class_name: 'Airport', foreign_key: 'destination_id'
-  has_many :passengers
-  has_many :bookings
+  belongs_to :origin, class_name: 'Airport'
+  belongs_to :destination, class_name: 'Airport'
+  has_many :passengers, dependent: :delete_all
+  has_many :bookings, dependent: :delete_all
 
   scope :filter_by_origin, ->(origin) { where(origin:) }
   scope :filter_by_destination, ->(destination) { where(destination:) }
   scope :filter_by_date, lambda { |date|
-    where(departure_time: [Time.parse(date).beginning_of_day..Time.parse(date).end_of_day]) unless date.nil?
+    where(departure_time: [Time.zone.parse(date).beginning_of_day..Time.zone.parse(date).end_of_day]) unless date.nil?
   }
 
   def departure_date_formatted

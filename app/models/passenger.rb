@@ -8,7 +8,5 @@ class Passenger < ApplicationRecord
 
   belongs_to :booking
 
-  def flight
-    booking.flight
-  end
+  delegate :flight, to: :booking
 end
