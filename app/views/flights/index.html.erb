@@ -33,20 +33,24 @@
         <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b self-stretch text-center">
           <%= "Flights: #{@search[:origin]} -> #{@search[:destination]} (#{@search[:date]})" %>
         </div>
-        <div class="flex flex-col">
-          <%= form_with url: new_booking_path, method: :get do |form| %>
-            <%= form.hidden_field :num_of_passengers, value: params[:number_of_passengers] %>
-            <% @matching_flights.each do |flight| %>
-              <%= render partial: 'flight', locals: {flight: flight, form: form} %>
-            <% end %>
-            <div class="flex justify-end">
-              <div class="btn my-3 mr-3">
-                <%= form.submit "Book flight" %>
+        <% if @matching_flights.empty? %>
+          <div class="p-3 text-center">Sorry, there are no flights for that trip. <br>Please change one or more of the inputs above and try again.</div>
+        <% else %>
+          <div class="flex flex-col">
+            <%= form_with url: new_booking_path, method: :get do |form| %>
+              <%= form.hidden_field :num_of_passengers, value: params[:number_of_passengers] %>
+              <% @matching_flights.each do |flight| %>
+                <%= render partial: 'flight', locals: {flight: flight, form: form} %>
+              <% end %>
+              <div class="flex justify-end">
+                <div class="btn my-3 mr-3">
+                  <%= form.submit "Book flight" %>
+                </div>
               </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>  
+    <% end %>
   </div>
 </div>
