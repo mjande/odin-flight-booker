@@ -93,3 +93,4 @@ end
 
 # Add for support for Capybara
 require 'capybara/rspec'
+

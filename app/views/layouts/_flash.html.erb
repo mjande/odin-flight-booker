@@ -1,0 +1,13 @@
+<% flash.each do |type, msg| %>
+  <% if type == 'error' %>
+    <div class="bg-red-300 w-screen text-center p-2">
+      <% msg.each do |error| %>
+        <div><%= error %></div> 
+      <% end %>
+    </div>
+  <% elsif type == 'success' %>
+    <div class="bg-green-300 w-screen text-center p-2">
+      <%= msg %>
+    </div>
+  <% end %>
+<% end %>

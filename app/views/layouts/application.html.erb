@@ -18,9 +18,7 @@
   <body>
     <main class="flex flex-col bg-dark h-screen">
       <%= render 'layouts/header' %>
-      <% flash.each do |name, message| %>
-        <div class="<%= name %>"><%= message %></div>
-      <% end %>
+      <%= render 'layouts/flash' %>
       <%= yield %>
     </main>
   </body>

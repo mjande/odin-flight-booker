@@ -1,14 +1,4 @@
 <div class="flex flex-col items-center gap-6 w-full">
-  <% if @booking.errors.any? %>
-    <div class="bg-red-300 w-screen text-center p-2">
-      <% @booking.passengers.each do |passenger| %>
-        <% passenger.errors.full_messages.each do |message| %>
-          <h3>Passenger's <%= message.downcase %></h3>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
-
   <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow mt-12">
     <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b">Your Booking</div>
       <%= form_with model: @booking, method: :post do |form| %>

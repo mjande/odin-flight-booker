@@ -10,13 +10,6 @@ describe 'Creating a booking', type: :feature do
     )
   end
 
-  before do
-    create(:airport)
-    create(:airport)
-    create(:flight)
-    create(:flight)
-  end
-
   scenario 'matching flight inputs' do
     visit flights_path
     select 'ORD', from: :origin_id
