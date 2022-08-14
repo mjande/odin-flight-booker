@@ -1,8 +1,6 @@
-# Flight Booker
+# Odin Flight Booker
 
-Flight Booker allows a user to find and book flights based on origin/destination and dates. It is a learning project created as part of the curriculum at [The Odin Project](theodinproject.com), and it is not connected to any external APIs (users cannot book real flights with this app). Project specs can be found at the project page found [here](https://www.theodinproject.com/lessons/ruby-on-rails-flight-booker).
-
-## Table of Contents
+Odin Flight Booker allows a user to find and book flights based on origin/destination and dates. It is a learning project created as part of the curriculum at [The Odin Project](theodinproject.com), and it is not connected to any external APIs (users cannot book real flights with this app). Project specs can be found at the project page found [here](https://www.theodinproject.com/lessons/ruby-on-rails-flight-booker).
 
 ## Technologies
 
@@ -14,9 +12,9 @@ Flight Booker allows a user to find and book flights based on origin/destination
 
 You can access a live version of this app here.
 
-> Dependencies
-> Ruby 3.1.2
-> Rails 7.0.3
+> Dependencies  
+> Ruby 3.1.2  
+> Rails 7.0.3  
 
 To access a local version, make sure you have both dependencies, then clone the repo using the commands below.
 
@@ -27,7 +25,7 @@ bundle install
 bin/rails server
 ```
 
-Then, navigate to `localhost:3000' to begin using the app.
+Then, navigate to `localhost:3000` to begin using the app.
 
 ## Features
 
