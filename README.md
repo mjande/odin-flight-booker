@@ -13,8 +13,8 @@ Odin Flight Booker allows a user to find and book flights based on origin/destin
 You can access a live version of this app here.
 
 > Dependencies  
-> Ruby 3.1.2  
-> Rails 7.0.3  
+> - Ruby 3.1.2  
+> - Rails 7.0.3  
 
 To access a local version, make sure you have both dependencies, then clone the repo using the commands below.
 
