@@ -4,7 +4,7 @@
 
 @layer components {
   .btn {
-    @apply py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender hover:bg-purple hover:shadow active:outline-none active:ring-purple-400 active:ring-4;
+    @apply py-2 px-4 rounded-xl text-white border-dark border-2 bg-lavender hover:bg-purple hover:shadow active:outline-none active:ring active:ring-rose-900 ;
   }
 }
 
