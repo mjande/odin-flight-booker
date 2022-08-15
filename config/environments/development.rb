@@ -67,4 +67,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Added per installation instructions for Sprockets Better Errors
+  config.assets.raise_production_errors = true
 end
