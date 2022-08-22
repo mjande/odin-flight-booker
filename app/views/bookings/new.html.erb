@@ -5,19 +5,23 @@
         <div class="flex flex-col items-center gap-5 px-6 py-3">
           <%= form.hidden_field :flight_id, value: @booking.flight_id %>
           <%= render partial: "details", locals: { booking: @booking }%>
-          <%= form.fields_for :passengers do |passenger_form| %>
-            <div class="flex flex-col gap-3">
-              <div class="flex gap-2">
-                <div><%= passenger_form.label :name, "Name" %>
-                <%= passenger_form.text_field :name %></div>
-                <div><%= passenger_form.label :email, "Email" %>
-                <%= passenger_form.email_field :email %></div>
-              </div>
-            <% end %>
-          <div class="btn self-end"><%= form.submit %></div>
+          <%= form.fields_for :passengers, child_index: 'INDEX' do |passenger_form| %>
+            <div class="flex flex-col gap-3" data-controller="field" data-field-target="form">
+              <template data-field-target="template">
+                <div class="flex gap-2" data-field-target="addedField">
+                  <div><%= passenger_form.label :name, "Name" %>
+                  <%= passenger_form.text_field :name %></div>
+                  <div><%= passenger_form.label :email, "Email" %>
+                  <%= passenger_form.email_field :email %></div>
+                </div>
+              </template>
+              <button type="button" data-action="field#add">Add Passenger</button>
+              <button type="button" data-action="field#delete">Remove Passenger</button>
+            </div>
+          <% end %>
+        <div class="btn self-end"><%= form.submit %></div>
         </div>
       <% end %>
     </div>
   </div>
-</div>
 </div>
