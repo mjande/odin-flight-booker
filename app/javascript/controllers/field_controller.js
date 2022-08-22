@@ -11,19 +11,18 @@ export default class extends Controller {
   add() {    
     let newField = this.templateTarget.innerHTML.replace(/INDEX/g, this.index);
     if (this.hasAddedFieldTarget) {
-      this.addedFieldTarget.insertAdjacentHTML("afterend", newField);
+      this.addedFieldTargets.at(-1).insertAdjacentHTML("afterend", newField);
     } else {
       this.templateTarget.insertAdjacentHTML("afterend", newField);
     }
 
     this.index++
-
-    // Make sure passenger can be added to db, and that user can remove passengers without messing up indices.
   }
 
   delete() {
     if (this.addedFieldTargets.length > 1) {
-      this.addedFieldTarget.remove()
+      this.addedFieldTargets.at(-1).remove()
+      this.index--
     }
   }
 }
