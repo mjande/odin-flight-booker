@@ -2,7 +2,7 @@
   <div class="flex flex-col border-2 border-black border-solid rounded-2xl bg-olive shadow mt-12">
     <div class="text-xl text-white bg-purple p-4 rounded-2xl rounded-b-none border-b-dark border-b">Your Booking</div>
       <%= form_with model: @booking, method: :post do |form| %>
-        <div class="flex flex-col items-center gap-5 px-6 py-3">
+        <div class="flex flex-col items-center gap-3 px-6 py-3">
           <%= form.hidden_field :flight_id, value: @booking.flight_id %>
           <%= render partial: "details", locals: { booking: @booking }%>
           <%= form.fields_for :passengers, child_index: 'INDEX' do |passenger_form| %>
@@ -15,8 +15,11 @@
                   <%= passenger_form.email_field :email %></div>
                 </div>
               </template>
-              <button type="button" data-action="field#add">Add Passenger</button>
-              <button type="button" data-action="field#delete">Remove Passenger</button>
+              <div class="flex justify-end gap-2 ">
+                <button type="button" data-action="field#add" class="btn">Add Passenger</button>
+                <button type="button" data-action="field#delete" class="btn">Remove Passenger</button>
+              </div>
+              <hr class="border-black">
             </div>
           <% end %>
         <div class="btn self-end"><%= form.submit %></div>
