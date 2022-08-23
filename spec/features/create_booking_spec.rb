@@ -14,7 +14,6 @@ describe 'Creating a booking', type: :feature do
     visit flights_path
     select 'ORD', from: :origin_id
     select 'SEA', from: :destination_id
-    select '2', from: :number_of_passengers
     select '08/09/2022', from: :departure_time
     click_on 'Search'
     choose :flight_id, option: flight.id

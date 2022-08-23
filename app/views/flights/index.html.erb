@@ -13,10 +13,6 @@
             <div class="mb-2"><%= form.label :destination_id, "To?" %></div>
             <div><%= form.select :destination_id, @airport_options %></div>
           </div>
-          <div class="w-24">
-            <div class="mb-2"><%= form.label :number_of_passengers, "Number of passengers?" %></div>
-            <div><%= form.select :number_of_passengers, 1..4 %></div>
-          </div>
           <div>
             <div class="mb-2"><%= form.label :departure_time, "Departure date?" %></div>
             <div><%= form.select :departure_time, @date_options %></div>
@@ -38,7 +34,6 @@
         <% else %>
           <div class="flex flex-col">
             <%= form_with url: new_booking_path, method: :get do |form| %>
-              <%= form.hidden_field :num_of_passengers, value: params[:number_of_passengers] %>
               <% @matching_flights.each do |flight| %>
                 <%= render partial: 'flight', locals: {flight: flight, form: form} %>
               <% end %>
