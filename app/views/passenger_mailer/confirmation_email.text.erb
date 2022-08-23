@@ -12,5 +12,4 @@ Departure time: <%= @flight.departure_time_formatted %>
 
 Your fellow passengers: <%= @booking.passengers.where.not(name: @passenger.name) %>
 
-To view or modify your booking, visit our website: <%= @booking_url %>
 
