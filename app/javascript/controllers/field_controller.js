@@ -4,8 +4,12 @@ export default class extends Controller {
   static targets = [ "template", "form", "addedField" ]
 
   initialize() {
-    this.index = 0;
-    this.add();
+    if (this.hasAddedFieldTarget) {
+      this.index = (this.hasAddedFieldTargets.count - 1)
+    } else {
+      this.index = 0;
+      this.add();
+    }
   }
   
   add() {    

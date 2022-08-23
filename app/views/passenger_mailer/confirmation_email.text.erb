@@ -1,0 +1,16 @@
+Booking Confirmation
+
+Your flight from <%= @flight.origin.code %> on <%= @flight.departure_date_formatted %> is confirmed.
+======================================================
+
+Details:
+
+Departing from: <%= @flight.origin.code %>
+Arriving at: <%= @flight.destination.code %>
+Departure date: <%= @flight.departure_date_formatted %>
+Departure time: <%= @flight.departure_time_formatted %>
+
+Your fellow passengers: <%= @booking.passengers.where.not(name: @passenger.name) %>
+
+To view or modify your booking, visit our website: <%= @booking_url %>
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+
+    <body>
+      <h1>Booking Confirmation</h1>
+
+      <p>Your flight from <%= @flight.origin.code %> on <%= @flight.departure_date_formatted %> is confirmed.</p>
+
+      <h2>Details:</h2>
+      <div>Departing from: <%= @flight.origin.code %></div>
+      <div>Arriving at: <%= @flight.destination.code %></div>
+      <div>Departure date: <%= @flight.departure_date_formatted %></div>
+      <div>Departure time: <%= @flight.departure_time_formatted %></div>
+
+      <div>Your fellow passengers: 
+        <% @other_passengers.each do |passenger| %>
+          <%= passenger.name %>
+        <% end %>
+      </div>
+
+      <div>To view or modify your booking, visit our website: <%= @booking_url %></div>
+    </body>
