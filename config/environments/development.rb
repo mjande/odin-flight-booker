@@ -70,4 +70,8 @@ Rails.application.configure do
 
   # Added per installation instructions for Sprockets Better Errors
   config.assets.raise_production_errors = true
+
+  # Configure deliveries for mailer and letter_opener gem
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
 end

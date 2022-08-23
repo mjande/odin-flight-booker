@@ -79,4 +79,6 @@ group :development do
   # Add better errors, with optional usage dependent on binding_of_caller
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  gem "letter_opener"
 end
