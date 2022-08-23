@@ -23,6 +23,7 @@ describe 'Creating a booking', type: :feature do
   scenario 'with valid inputs' do
     fill_in 'booking_passengers_attributes_0_name', with: 'Joe'
     fill_in 'booking_passengers_attributes_0_email', with: 'joe@gmail.com'
+    click_on 'Add Passenger'
     fill_in 'booking_passengers_attributes_1_name', with: 'Sarah'
     fill_in 'booking_passengers_attributes_1_email', with: 'sarah@gmail.com'
     click_on 'Create Booking'
