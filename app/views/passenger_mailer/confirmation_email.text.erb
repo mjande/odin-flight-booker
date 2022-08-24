@@ -10,6 +10,11 @@ Arriving at: <%= @flight.destination.code %>
 Departure date: <%= @flight.departure_date_formatted %>
 Departure time: <%= @flight.departure_time_formatted %>
 
-Your fellow passengers: <%= @booking.passengers.where.not(name: @passenger.name) %>
+Your fellow passengers: 
+<% @other_passengers.each do |passenger| %>
+  <%= passenger.name %>
+<% end %>
 
+To view or modify your booking, visit our website:
+<%= @url %>
 
