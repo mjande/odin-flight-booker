@@ -93,4 +93,9 @@ end
 
 # Add for support for Capybara
 require 'capybara/rspec'
+require 'webdrivers'
+require 'capybara/email/rspec'
 
+Capybara.app_host = 'http://localhost:3000'
+Capybara.server_host = 'localhost'
+Capybara.server_port = '3000'

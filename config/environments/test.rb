@@ -43,8 +43,7 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  # This line let us to use expect(...).to have_enqueued_job.on_queue('mailers') 
-  config.active_job.queue_adapter = :test
+  config.active_job.queue_adapter = :inline
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
@@ -61,5 +60,5 @@ Rails.application.configure do
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
-  config.action_mailer.default_url_options = { host: "localhost:#{Capybara.server_port}" }
+  config.action_mailer.default_url_options = { host: "localhost", port: '3000' }
 end
