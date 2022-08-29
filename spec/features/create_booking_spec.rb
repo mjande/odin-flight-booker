@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe 'Creating a booking', type: :feature do
+describe 'Creating a booking', type: :feature, driver: :selenium_chrome_headless do
   let!(:flight) do
-    Flight.create(
+    Flight.create!(
       origin: Airport.create(code: 'ORD'),
       destination: Airport.create(code: 'SEA'),
       departure_time: '2022-08-09 10:00',
