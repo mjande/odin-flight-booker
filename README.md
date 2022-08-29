@@ -57,13 +57,13 @@ rails generate rspec:install
 - Running all tests:
 
 ```
-rspec 
+bundle exec rspec 
 ```
 
 - Running tests for a specific file:
 
 ```
-rspec spec/features/search_flights_spec.rb
+bundle exec rspec spec/features/search_flights_spec.rb
 ```
 
 ## Acknowledgements
