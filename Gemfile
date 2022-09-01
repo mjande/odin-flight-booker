@@ -56,6 +56,9 @@ gem 'tailwindcss-rails', '~> 2.0'
 # Use Faker (used both in test env and production for seeding the database)
 gem 'faker'
 
+# Use Figaro for hiding sensitive information (for email functionality)
+gem "figaro"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
