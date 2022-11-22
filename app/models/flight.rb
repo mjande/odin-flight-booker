@@ -29,6 +29,6 @@ class Flight < ApplicationRecord
   scope :filter_by_origin, ->(origin) { where(origin:) }
   scope :filter_by_destination, ->(destination) { where(destination:) }
   scope :filter_by_date, lambda { |date|
-    where(departure_time: [Time.zone.parse(date).beginning_of_day..Time.zone.parse(date).end_of_day]) unless date.nil?
+    where(departure_time: [Time.strptime(date, '%m/%d/%Y').beginning_of_day..Time.strptime(date, '%m/%d/%Y').end_of_day]) unless date.nil?
   }
 end

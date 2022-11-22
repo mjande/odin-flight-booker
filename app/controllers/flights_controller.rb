@@ -4,7 +4,7 @@
 class FlightsController < ApplicationController
   def index
     @airport_options = Airport.all.map { |airport| [airport.code, airport.id] }
-    @date_options = Flight.all.map { |flight| [flight.departure_date_formatted, flight.departure_time] }
+    @date_options = Flight.all.map(&:departure_date_formatted).uniq
 
     return if params[:origin_id].blank?
 

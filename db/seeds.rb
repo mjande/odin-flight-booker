@@ -11,16 +11,38 @@ require 'faker'
 Flight.delete_all
 Airport.delete_all
 
-airport_codes = %w[ATL DFW DEN ORD LAX CLT MCO LAS PHX MIA SEA IAH JFK EWR FLL MSP SFO DTW BOS SLC PHL BWI TPA SAN LGA MDW BNA IAD]
+airport_codes = %w[ATL DFW DEN ORD DTW]
 
 airport_codes.each do |airport_code|
   Airport.create(code: airport_code)
 end
 
-15.times do
-  orig = Airport.all.sample
-  dest = Airport.where.not(id: orig.id).sample
-  dur = Faker::Number.between(from: 3, to: 8)
-  start = Faker::Time.between(from: Time.zone.now, to: Time.zone.now.next_year)
-  Flight.create(origin_id: orig.id, destination_id: dest.id, departure_time: start, flight_duration: dur)
+dates = []
+7.times do |i|
+  new_date = Time.zone.parse("Jan #{i + 1} 2023")
+  dates << new_date
+end
+
+Airport.all.each do |departure_airport|
+  Airport.where.not(id: departure_airport.id).each do |arrival_airport|
+    dates.each do |date|
+      departure_time = Faker::Time.between_dates(from: date.beginning_of_day, to: date.end_of_day)
+      flight_duration = Faker::Number.between(from: 3, to: 8)
+
+      Flight.create(origin_id: departure_airport.id,
+                    destination_id: arrival_airport.id, departure_time:,
+                    flight_duration:)
+    end
+  end
+
+  5.times do
+    destination_id = Airport.where.not(id: departure_airport.id).sample.id
+    departure_time = Faker::Time.between_dates(from: dates[0], to: dates[-1])
+    flight_duration = Faker::Number.between(from: 3, to: 8)
+
+    Flight.create(origin_id: departure_airport.id,
+                  destination_id:,
+                  departure_time:,
+                  flight_duration:)
+  end
 end
