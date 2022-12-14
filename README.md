@@ -12,7 +12,7 @@ Odin Flight Booker allows a user to find and book flights based on origin/destin
 
 ## Installation
 
-You can access a live version of this app [here](https://stark-lowlands-16925.herokuapp.com/).
+You can access a live version of this app at https://odin-flight-booker-production-87e2.up.railway.app/
 
 > Dependencies  
 > - Ruby 3.1.2  
